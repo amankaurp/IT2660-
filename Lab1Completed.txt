@@ -1,0 +1,116 @@
+import java.util.*;
+/*
+ * IT-2660 - Lab 1
+ * Student Name: Aman Kaur
+ */
+
+public class Main {
+
+    public static void main(String[] args) {
+    System.out.println("hello, world!");
+
+    Lab1 lab = new Lab1();
+    System.out.println(lab.increment(1));
+    
+    //Create an array with values {5, 9, 3, 12, 7, 3, 11, 5}
+    int[] nums = {5, 9, 3, 12, 7, 3, 11, 5};
+    
+    //Output the array in order using a while loop
+    int i = 0;
+    int[] numsSorted = new int[nums.length];
+    while(i < nums.length){
+        numsSorted[i] = lab.min(nums);
+        int j = 0;
+        while (lab.min(nums) != nums[j]) {j++;}
+        nums[j] = lab.max(nums);
+        i++;
+    }
+    nums = numsSorted;
+    System.out.println("Sorted: "+ Arrays.toString(nums));
+    
+    //Output the array in reverse using a for loop
+    i = 0;
+    int[] numsReversed = new int[nums.length];
+    while(i < nums.length){
+        numsReversed[i] = lab.max(nums);
+        int j = 0;
+        while (lab.max(nums) != nums[j]) {j++;}
+        nums[j] = lab.min(nums);
+        i++;
+    }
+    nums = numsReversed;
+    System.out.println("Reverse: "+ Arrays.toString(nums));
+    
+    //Output the first and last values of the array
+    System.out.println("First value: "+nums[0]);
+    System.out.println("Last value: "+nums[nums.length - 1]);
+    
+    //Call the methods created in Lab1
+    System.out.println("max: "+ lab.max(1,2));
+    System.out.println("min: "+ lab.min(1,2));
+    System.out.println("sum: "+ lab.sum(nums));
+    System.out.println("avg: "+ lab.average(nums));
+    System.out.println("max: "+ lab.max(nums));
+    System.out.println("min: "+ lab.min(nums));
+    }
+}
+
+// Add all of the methods here
+class Lab1 {
+  public int increment(int num) {
+    return ++num;
+  }
+  
+  //max(int a, int b): Use an if-statement to return the maximum value.
+  public int max(int a, int b) {
+    if (a >= b) { return a; }
+    else { return b; }
+  }
+  
+  //min(int a, int b): Use an if-statement to return the minimum value.
+  public int min(int a, int b) {
+    if (a <= b) { return a; }
+    else { return b; }
+  }
+  
+  //sum(int[] nums): Return the sum of all values in the array.
+  public int sum(int[] nums) {
+    int L = nums.length;
+    int answer = 0;
+    for (int i = 0; i < L; i++)
+    {answer = answer + nums[i];}
+    return answer;
+  }
+  
+  //average(int[] nums): Use a foreach loop to return the average.
+  public int average(int[] nums) {
+    
+    int sum = 0;
+    for (int n : nums) {    // for-each loop
+      sum += n;
+    }
+    int avg = sum/nums.length;
+    return avg;
+  }
+  
+  //max(int[] nums): Use a for loop to return the maximum value.
+  public int max(int[] nums) {
+    int L = nums.length;
+    int max = nums[0];
+    for (int i = 1; i < L; i++){
+    if(max < nums[i] ){max = nums[i];}
+    }
+    return max;
+  }
+  
+  //min(int[] nums): Use a for loop to return the minimum value.
+  public int min(int[] nums) {
+    int L = nums.length;
+    int min = nums[0];
+    for (int i = 1; i < L; i++){
+    if(min > nums[i] ){min = nums[i];}
+    }
+    return min;
+  }
+ 
+}
