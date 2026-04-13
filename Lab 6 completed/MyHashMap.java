@@ -19,7 +19,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
   // The number of entries in the map
   private int size = 0;
 
-  // Hash table is an array with each cell being a linked list
+  //A hash table is an array with each cell being a linked list
   LinkedList<MyMap.Entry<K, V>>[] table;
 
   /** Construct a map with the default capacity and load factor */
@@ -43,18 +43,18 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     table = new LinkedList[capacity];
   }
 
-  @Override
+  //Override
   public void clear() {
     size = 0;
     removeEntries();
   }
 
-  @Override
+  //Override
   public boolean containsKey(K key) {
     return get(key) != null;
   }
 
-  @Override
+  //Override
   public boolean containsValue(V value) {
     for (int i = 0; i < capacity; i++) {
       if (table[i] != null) {
@@ -68,7 +68,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     return false;
   }
 
-  @Override
+  //Override
   public java.util.Set<MyMap.Entry<K, V>> entrySet() {
     java.util.Set<MyMap.Entry<K, V>> set = new java.util.HashSet<>();
 
@@ -84,7 +84,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     return set;
   }
 
-  @Override
+  //Override
   public V get(K key) {
     int bucketIndex = hash(key.hashCode());
 
@@ -99,12 +99,12 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     return null;
   }
 
-  @Override
+  //Override
   public boolean isEmpty() {
     return size == 0;
   }
 
-  @Override
+  //Override
   public java.util.Set<K> keySet() {
     java.util.Set<K> set = new java.util.HashSet<>();
 
@@ -120,7 +120,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     return set;
   }
 
-  @Override
+  //Override
   public V put(K key, V value) {
     if (get(key) != null) {
       int bucketIndex = hash(key.hashCode());
@@ -154,7 +154,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     return value;
   }
 
-  @Override
+  //Override
   public void remove(K key) {
     int bucketIndex = hash(key.hashCode());
 
@@ -176,12 +176,12 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     }
   }
 
-  @Override
+  //Override
   public int size() {
     return size;
   }
 
-  @Override
+  //Override
   public java.util.Set<V> values() {
     java.util.Set<V> set = new java.util.HashSet<>();
 
@@ -226,7 +226,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     }
   }
 
-  /** Rehash the map */
+  /** hash the map */
   private void rehash() {
     java.util.Set<Entry<K, V>> set = entrySet();
     capacity <<= 1;
@@ -238,7 +238,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     }
   }
 
-  @Override
+  //Override
   public String toString() {
     StringBuilder builder = new StringBuilder("[");
 
